@@ -27,14 +27,10 @@ namespace Lab3_Ballz
         {
             set
             {
-                Score(value);
-              
-            }
-        }
+                //MessageBox.Show($"{value.ToString()}");
+                UI_Score_Lbl.Text = value.ToString();
 
-        private void Score(int value)
-        {
-           UI_Score_Lbl.Text = value.ToString();
+            }
         }
 
         public ScoreModeLessDialog()

@@ -17,10 +17,10 @@ namespace Lab3_Ballz
     public partial class Form1 : Form
     {
         //declare an object of the modal dialog
-        ScoreModeLessDialog scoreModeLessDialog1 = new ScoreModeLessDialog();
+        ScoreModeLessDialog scoreModeLessDialog = new ScoreModeLessDialog();
         SelectDifficultyModalDialog dialog=null;
         AnimationModeLessDialog animationModeLessDialog = null;
-        ScoreModeLessDialog scoreModeLessDialog = null;
+        //ScoreModeLessDialog scoreModeLessDialog = null;
         Stopwatch stopwatch=null;   
         int row;
         int col;
@@ -67,7 +67,8 @@ namespace Lab3_Ballz
             if(isValid)
             {
                 score += Pick();
-                scoreModeLessDialog1.SetScore = score;
+                scoreModeLessDialog.SetScore = score;
+
             }
     
             //call BallsAlive and check for a zero return value
@@ -113,16 +114,17 @@ namespace Lab3_Ballz
             }
             else
             {
+    
                 dialog.gameElements[row, col].stateOfObject = SelectDifficultyModalDialog.StateOfObjects.Dead;
                     numberOfBallsKilled += 1;
 
             }
+            //make the recursive calls
+            CheckBalls(row + 1, col, ballColor);//down
+            CheckBalls(row - 1, col, ballColor);//up
+            CheckBalls(row, col + 1, ballColor);//right
+            CheckBalls(row, col - 1, ballColor);//left
 
-           //make the recursive calls
-           CheckBalls(row+1, col, ballColor);//down
-           CheckBalls(row - 1, col, ballColor);//up
-           CheckBalls(row, col+1, ballColor);//right
-           CheckBalls(row, col-1, ballColor);//left
 
             return numberOfBallsKilled;
         }
@@ -147,13 +149,15 @@ namespace Lab3_Ballz
         private void UI_ShowScore_Cbx_CheckedChanged(object sender, EventArgs e)
         {
             
-            if (scoreModeLessDialog==null)
+            if (scoreModeLessDialog!=null)
             {
-                scoreModeLessDialog = new ScoreModeLessDialog();
+              
                 scoreModeLessDialog.SetValue = (CheckBox)sender;
+                
                 scoreModeLessDialog.delClose = UncheckTheBox;
                 
             }
+          
             scoreModeLessDialog.Show();
         }
 
