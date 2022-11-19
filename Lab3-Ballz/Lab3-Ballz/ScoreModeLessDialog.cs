@@ -12,6 +12,7 @@ namespace Lab3_Ballz
 {
     public partial class ScoreModeLessDialog : Form
     {
+      
         public delegate void delCloseForm(CheckBox cbx);
         public delCloseForm delClose = null;
         CheckBox cb = null;
@@ -27,15 +28,16 @@ namespace Lab3_Ballz
         {
             set
             {
-                Score(value);
-              
+                MessageBox.Show($"{value}");
+
             }
         }
 
-        private void Score(int value)
-        {
-           UI_Score_Lbl.Text = value.ToString();
-        }
+        //private void Score(int value)
+        //{
+          
+        //   UI_Score_Lbl.Text = value.ToString();
+        //}
 
         public ScoreModeLessDialog()
         {
@@ -49,7 +51,7 @@ namespace Lab3_Ballz
                 if (delClose != null)
                 {
                     //invoke the delegate like a method
-                    //delClose(cb);
+                    delClose(cb);
                 }
 
                 //stop the close from happening
@@ -60,5 +62,9 @@ namespace Lab3_Ballz
             }
         }
 
+        private void ScoreModeLessDialog_Load(object sender, EventArgs e)
+        {
+                
+        }
     }
 }

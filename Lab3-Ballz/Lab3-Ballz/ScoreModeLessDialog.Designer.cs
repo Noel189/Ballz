@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.UI_Score_Lbl = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -52,6 +54,10 @@
             this.UI_Score_Lbl.TabIndex = 1;
             this.UI_Score_Lbl.Text = "0000";
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            // 
             // ScoreModeLessDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -64,6 +70,7 @@
             this.Name = "ScoreModeLessDialog";
             this.Text = "Score";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ScoreModeLessDialog_FormClosing);
+            this.Load += new System.EventHandler(this.ScoreModeLessDialog_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -73,5 +80,6 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label UI_Score_Lbl;
+        private System.Windows.Forms.Timer timer1;
     }
 }

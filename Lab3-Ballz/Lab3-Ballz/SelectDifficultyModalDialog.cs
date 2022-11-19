@@ -30,6 +30,9 @@ namespace Lab3_Ballz
         int row;
         int col;
         int count = 1;
+        public delegate void delScore(int score);
+        public delScore delScoreUpdate = null;
+        ScoreModeLessDialog scoreModeLessDialog1 = new ScoreModeLessDialog();
 
         //create a cdrawer object 
         public  CDrawer drawer = new CDrawer();
@@ -192,6 +195,8 @@ namespace Lab3_Ballz
             if (isValid)
             {
                 score += Pick();
+                MessageBox.Show($"{score}");
+                scoreModeLessDialog1.SetScore = score;
                
             }
 

@@ -17,7 +17,7 @@ namespace Lab3_Ballz
     public partial class Form1 : Form
     {
         //declare an object of the modal dialog
-        ScoreModeLessDialog scoreModeLessDialog1 = new ScoreModeLessDialog();
+    
         SelectDifficultyModalDialog dialog=null;
         AnimationModeLessDialog animationModeLessDialog = null;
         ScoreModeLessDialog scoreModeLessDialog = null;
