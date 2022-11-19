@@ -8,7 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace Lab3_Ballz
 {
@@ -22,7 +24,13 @@ namespace Lab3_Ballz
       public  const int COLUMN_COUNT=WIDTH/BALL_SIZE;
         public int xPosition = 0;
         public int yPosition = 0;
-   
+        int numberOfBallsKilled;
+        int score;
+        Point pos;
+        int row;
+        int col;
+        int count = 1;
+
         //create a cdrawer object 
         public  CDrawer drawer = new CDrawer();
         //create an enum that holds state of an object
@@ -50,6 +58,8 @@ namespace Lab3_Ballz
      public  GameElements[,] gameElements = new GameElements[ROW_COUNT, COLUMN_COUNT];
         private void UI_Ok_Btn_Click(object sender, EventArgs e)
         {
+            //start the timer
+            timer1.Enabled = true;
             DialogResult = DialogResult.OK;
             Randomize();
 
@@ -173,6 +183,90 @@ namespace Lab3_Ballz
         private void UI_Cancel_Btn_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel; 
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            //  dialog.drawer.MouseLeftClick += Canvas_MouseLeftClick;
+            bool isValid = drawer.GetLastMouseLeftClick(out pos);
+            if (isValid)
+            {
+                score += Pick();
+               
+            }
+
+            //call BallsAlive and check for a zero return value
+            int value = BallsAlive();
+
+            if (value == 0)
+            {
+                timer1.Enabled = false;
+            }
+
+        }
+
+        private int Pick()
+        {
+            int score = 0;
+            col = pos.X / SelectDifficultyModalDialog.BALL_SIZE;
+            row = pos.Y / SelectDifficultyModalDialog.BALL_SIZE;
+            if (gameElements[row, col].stateOfObject == SelectDifficultyModalDialog.StateOfObjects.Dead)
+            {
+
+            }
+            else
+            {
+                score = CheckBalls(row, col,gameElements[row, col].ballColor);
+            }
+
+            return score;
+        }
+
+        private int CheckBalls(int row, int col, Color ballColor)
+        {
+            if (row > 11 || col > 15 || row < 0 || col < 0)
+            {
+                return 0;
+            }
+            else if (gameElements[row, col].stateOfObject == SelectDifficultyModalDialog.StateOfObjects.Dead)
+            {
+                return 0;
+            }
+            else if (gameElements[row, col].ballColor != ballColor)
+            {
+                return 0;
+            }
+            else
+            {
+                gameElements[row, col].stateOfObject = SelectDifficultyModalDialog.StateOfObjects.Dead;
+                numberOfBallsKilled += 1;
+
+            }
+
+            //make the recursive calls
+            CheckBalls(row + 1, col, ballColor);//down
+            CheckBalls(row - 1, col, ballColor);//up
+            CheckBalls(row, col + 1, ballColor);//right
+            CheckBalls(row, col - 1, ballColor);//left
+
+            return numberOfBallsKilled;
+        }
+
+        private void Canvas_MouseLeftClick(Point pos, CDrawer dr)
+        {
+
+
+            score += Pick();
+
+            // MessageBox.Show(score.ToString());
+        }
+
+        private int BallsAlive()
+        {
+
+            return count;
+
+
         }
     }
 }

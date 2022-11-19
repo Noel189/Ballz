@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.UI_Hard_Rbn = new System.Windows.Forms.RadioButton();
             this.UI_Medium_Rbn = new System.Windows.Forms.RadioButton();
             this.UI_Easy_Rbn = new System.Windows.Forms.RadioButton();
             this.UI_Ok_Btn = new System.Windows.Forms.Button();
             this.UI_Cancel_Btn = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -104,6 +106,10 @@
             this.UI_Cancel_Btn.UseVisualStyleBackColor = true;
             this.UI_Cancel_Btn.Click += new System.EventHandler(this.UI_Cancel_Btn_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // SelectDifficultyModalDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -129,5 +135,6 @@
         private System.Windows.Forms.RadioButton UI_Easy_Rbn;
         private System.Windows.Forms.Button UI_Ok_Btn;
         private System.Windows.Forms.Button UI_Cancel_Btn;
+        private System.Windows.Forms.Timer timer1;
     }
 }

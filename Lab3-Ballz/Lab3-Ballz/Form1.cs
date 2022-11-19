@@ -21,17 +21,9 @@ namespace Lab3_Ballz
         SelectDifficultyModalDialog dialog=null;
         AnimationModeLessDialog animationModeLessDialog = null;
         ScoreModeLessDialog scoreModeLessDialog = null;
-        Stopwatch stopwatch=null;   
-        int row;
-        int col;
-        int count = 1;
-        int numberOfBallsKilled;
-        int score;
-        Point pos;
         public Form1()
         {
             InitializeComponent();
-            stopwatch = new Stopwatch();
         }
 
         private void UI_Play_Btn_Click(object sender, EventArgs e)
@@ -45,9 +37,6 @@ namespace Lab3_Ballz
                 {
                     dialog.Close();//closes the dialog
 
-                    //start the timer
-                    timer1.Enabled = true;
-
                     UI_Play_Btn.Enabled = false; //disable play button
                    
                 }
@@ -57,90 +46,6 @@ namespace Lab3_Ballz
                     dialog = null;
                 }
             }
-
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            //  dialog.drawer.MouseLeftClick += Canvas_MouseLeftClick;
-            bool isValid = dialog.drawer.GetLastMouseLeftClick(out pos);
-            if(isValid)
-            {
-                score += Pick();
-                scoreModeLessDialog1.SetScore = score;
-            }
-    
-            //call BallsAlive and check for a zero return value
-            int value = BallsAlive();
-
-            if(value==0)
-            {
-                timer1.Enabled = false; 
-            }
-     
-        }
-
-        private int Pick()
-        {
-                int score = 0;
-                col = pos.X / SelectDifficultyModalDialog.BALL_SIZE;
-                row = pos.Y / SelectDifficultyModalDialog.BALL_SIZE;
-                if(dialog.gameElements[row, col].stateOfObject == SelectDifficultyModalDialog.StateOfObjects.Dead)
-                {
-
-                }
-                else
-                {
-                  score =  CheckBalls(row, col, dialog.gameElements[row, col].ballColor);
-                }
-            
-            return score;
-        }
-
-        private int CheckBalls(int row, int col, Color ballColor)
-        {
-            if (row >  11 || col>15 || row <0 || col<0)
-            { 
-             return 0;
-            }
-        else if (dialog.gameElements[row, col].stateOfObject == SelectDifficultyModalDialog.StateOfObjects.Dead)
-            {
-                return 0;
-            }
-      else   if (dialog.gameElements[row,col].ballColor != ballColor)
-            {
-                return 0;
-            }
-            else
-            {
-                dialog.gameElements[row, col].stateOfObject = SelectDifficultyModalDialog.StateOfObjects.Dead;
-                    numberOfBallsKilled += 1;
-
-            }
-
-           //make the recursive calls
-           CheckBalls(row+1, col, ballColor);//down
-           CheckBalls(row - 1, col, ballColor);//up
-           CheckBalls(row, col+1, ballColor);//right
-           CheckBalls(row, col-1, ballColor);//left
-
-            return numberOfBallsKilled;
-        }
-
-        private void Canvas_MouseLeftClick(Point pos, CDrawer dr)
-        {
-
-           
-            score += Pick();
-        
-           // MessageBox.Show(score.ToString());
-        }
-
-        private int BallsAlive()
-        {
-
-            return count;
-
 
         }
 

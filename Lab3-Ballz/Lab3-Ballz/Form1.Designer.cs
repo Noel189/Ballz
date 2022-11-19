@@ -67,10 +67,6 @@
             this.UI_Play_Btn.UseVisualStyleBackColor = true;
             this.UI_Play_Btn.Click += new System.EventHandler(this.UI_Play_Btn_Click);
             // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
