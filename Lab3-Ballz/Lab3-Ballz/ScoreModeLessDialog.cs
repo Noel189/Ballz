@@ -49,7 +49,7 @@ namespace Lab3_Ballz
                 if (delClose != null)
                 {
                     //invoke the delegate like a method
-                    //delClose(cb);
+                    delClose(cb);
                 }
 
                 //stop the close from happening
