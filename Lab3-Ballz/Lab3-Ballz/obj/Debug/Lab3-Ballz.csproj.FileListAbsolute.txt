@@ -1,0 +1,16 @@
+C:\Users\horiz\OneDrive\Desktop\cmpe1666_Runfall22\Labs\Lab3-Ballz\Lab3-Ballz\bin\Debug\Lab3-Ballz.exe.config
+C:\Users\horiz\OneDrive\Desktop\cmpe1666_Runfall22\Labs\Lab3-Ballz\Lab3-Ballz\bin\Debug\Lab3-Ballz.exe
+C:\Users\horiz\OneDrive\Desktop\cmpe1666_Runfall22\Labs\Lab3-Ballz\Lab3-Ballz\bin\Debug\Lab3-Ballz.pdb
+C:\Users\horiz\OneDrive\Desktop\cmpe1666_Runfall22\Labs\Lab3-Ballz\Lab3-Ballz\bin\Debug\GDIDrawer.dll
+C:\Users\horiz\OneDrive\Desktop\cmpe1666_Runfall22\Labs\Lab3-Ballz\Lab3-Ballz\obj\Debug\Lab3-Ballz.csproj.AssemblyReference.cache
+C:\Users\horiz\OneDrive\Desktop\cmpe1666_Runfall22\Labs\Lab3-Ballz\Lab3-Ballz\obj\Debug\Lab3-Ballz.csproj.SuggestedBindingRedirects.cache
+C:\Users\horiz\OneDrive\Desktop\cmpe1666_Runfall22\Labs\Lab3-Ballz\Lab3-Ballz\obj\Debug\Lab3_Ballz.Form1.resources
+C:\Users\horiz\OneDrive\Desktop\cmpe1666_Runfall22\Labs\Lab3-Ballz\Lab3-Ballz\obj\Debug\Lab3_Ballz.Properties.Resources.resources
+C:\Users\horiz\OneDrive\Desktop\cmpe1666_Runfall22\Labs\Lab3-Ballz\Lab3-Ballz\obj\Debug\Lab3-Ballz.csproj.GenerateResource.cache
+C:\Users\horiz\OneDrive\Desktop\cmpe1666_Runfall22\Labs\Lab3-Ballz\Lab3-Ballz\obj\Debug\Lab3-Ballz.csproj.CoreCompileInputs.cache
+C:\Users\horiz\OneDrive\Desktop\cmpe1666_Runfall22\Labs\Lab3-Ballz\Lab3-Ballz\obj\Debug\Lab3-Ballz.csproj.CopyComplete
+C:\Users\horiz\OneDrive\Desktop\cmpe1666_Runfall22\Labs\Lab3-Ballz\Lab3-Ballz\obj\Debug\Lab3-Ballz.exe
+C:\Users\horiz\OneDrive\Desktop\cmpe1666_Runfall22\Labs\Lab3-Ballz\Lab3-Ballz\obj\Debug\Lab3-Ballz.pdb
+C:\Users\horiz\OneDrive\Desktop\cmpe1666_Runfall22\Labs\Lab3-Ballz\Lab3-Ballz\obj\Debug\Lab3_Ballz.SelectDifficultyModalDialog.resources
+C:\Users\horiz\OneDrive\Desktop\cmpe1666_Runfall22\Labs\Lab3-Ballz\Lab3-Ballz\obj\Debug\Lab3_Ballz.AnimationModeLessDialog.resources
+C:\Users\horiz\OneDrive\Desktop\cmpe1666_Runfall22\Labs\Lab3-Ballz\Lab3-Ballz\obj\Debug\Lab3_Ballz.ScoreModeLessDialog.resources
