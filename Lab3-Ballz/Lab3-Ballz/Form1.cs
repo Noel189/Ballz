@@ -26,8 +26,10 @@ namespace Lab3_Ballz
         int col;
         int count = 1;
         int numberOfBallsKilled;
+        int sum;
         int score;
         Point pos;
+        int c = 0;
         public Form1()
         {
             InitializeComponent();
@@ -62,11 +64,13 @@ namespace Lab3_Ballz
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            Text = $"{c++}";
             //  dialog.drawer.MouseLeftClick += Canvas_MouseLeftClick;
             bool isValid = dialog.drawer.GetLastMouseLeftClick(out pos);
+
             if(isValid)
             {
-                score += Pick();
+                score = Pick();
                 scoreModeLessDialog.SetScore = score;
 
             }
@@ -116,31 +120,34 @@ namespace Lab3_Ballz
             {
     
                 dialog.gameElements[row, col].stateOfObject = SelectDifficultyModalDialog.StateOfObjects.Dead;
-                    numberOfBallsKilled += 1;
+                    numberOfBallsKilled = 1;
+                //make the recursive calls
+              CheckBalls(row + 1, col, ballColor);//down
+              CheckBalls(row - 1, col, ballColor);//up
+              CheckBalls(row, col + 1, ballColor);//right
+              CheckBalls(row, col - 1, ballColor);//left
+                                                 
+                sum += numberOfBallsKilled;
 
             }
-            //make the recursive calls
-            CheckBalls(row + 1, col, ballColor);//down
-            CheckBalls(row - 1, col, ballColor);//up
-            CheckBalls(row, col + 1, ballColor);//right
-            CheckBalls(row, col - 1, ballColor);//left
 
+            return sum;
+           
 
-            return numberOfBallsKilled;
         }
 
         private void Canvas_MouseLeftClick(Point pos, CDrawer dr)
         {
 
            
-            score += Pick();
+            score = Pick();
         
            // MessageBox.Show(score.ToString());
         }
 
         private int BallsAlive()
         {
-
+          //  ******* // to be done *******
             return count;
 
 
