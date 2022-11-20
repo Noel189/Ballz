@@ -30,3 +30,4 @@ C:\Users\horiz\OneDrive\Desktop\Ballz\Lab3-Ballz\Lab3-Ballz\obj\Debug\Lab3-Ballz
 C:\Users\horiz\OneDrive\Desktop\Ballz\Lab3-Ballz\Lab3-Ballz\obj\Debug\Lab3-Ballz.csproj.CopyComplete
 C:\Users\horiz\OneDrive\Desktop\Ballz\Lab3-Ballz\Lab3-Ballz\obj\Debug\Lab3-Ballz.exe
 C:\Users\horiz\OneDrive\Desktop\Ballz\Lab3-Ballz\Lab3-Ballz\obj\Debug\Lab3-Ballz.pdb
+C:\Users\horiz\OneDrive\Desktop\Ballz\Lab3-Ballz\Lab3-Ballz\obj\Debug\Lab3_Ballz.HighScoreModalDialog.resources
