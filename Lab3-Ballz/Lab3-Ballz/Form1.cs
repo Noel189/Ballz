@@ -24,7 +24,6 @@ namespace Lab3_Ballz
         Stopwatch stopwatch=null;   
         int row;
         int col;
-        int count = 1;
         int numberOfBallsKilled;
         int sum;
         int score;
@@ -91,6 +90,8 @@ namespace Lab3_Ballz
             if(value==0)
             {
                 timer1.Enabled = false; 
+                dialog.drawer.Clear();
+                dialog.drawer.AddText("Game Over !", 25.5f, Color.Red);
             }
             else
             {
@@ -105,16 +106,16 @@ namespace Lab3_Ballz
                 score = 0;
                 col = pos.X / SelectDifficultyModalDialog.BALL_SIZE;
                 row = pos.Y / SelectDifficultyModalDialog.BALL_SIZE;
-            //    if(dialog.gameElements[row, col].stateOfObject == SelectDifficultyModalDialog.StateOfObjects.Dead)
-            //    {
-                
-            //}
-            //    else
-            //    {
-                  score =  CheckBalls(row, col, dialog.gameElements[row, col].ballColor);
-               
-            //}
-            
+            if (dialog.gameElements[row, col].stateOfObject == SelectDifficultyModalDialog.StateOfObjects.Dead)
+            {
+
+            }
+            else
+            {
+                score =  CheckBalls(row, col, dialog.gameElements[row, col].ballColor);
+
+            }
+
             return score;
         }
 
@@ -168,22 +169,16 @@ namespace Lab3_Ballz
                     {
                        if(row>0)
                         {
-                            //do
-                            //{
+                     
                                 if (dialog.gameElements[row-1, col].stateOfObject == SelectDifficultyModalDialog.StateOfObjects.Alive)
                                 {
 
                                 dialog.gameElements[row, col] = dialog.gameElements[row - 1, col];
-                                //dialog.gameElements[row, col] = new GameElements(dialog.gameElements[row - 1, col].ballColor, dialog.gameElements[row - 1, col].stateOfObject);
-                                // dialog.gameElements[row, col] = dialog.gameElements[row - 1, col];
+  
                                 dialog.gameElements[row-1, col].stateOfObject = SelectDifficultyModalDialog.StateOfObjects.Dead;
 
                                 }
-                            //} while (dialog.gameElements[row, col].stateOfObject == SelectDifficultyModalDialog.StateOfObjects.Alive);
-                            //else
-                            //{
-                            //    dialog.gameElements[row, col].stateOfObject = SelectDifficultyModalDialog.StateOfObjects.Dead;
-                            //}
+
                            
                         }
                
