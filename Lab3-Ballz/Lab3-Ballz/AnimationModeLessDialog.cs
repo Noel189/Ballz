@@ -13,7 +13,9 @@ namespace Lab3_Ballz
     public partial class AnimationModeLessDialog : Form
     {
         public delegate void delCloseForm(CheckBox cbx);
+        public delegate void delAnimationChanged(int value);
         public delCloseForm delClose = null;
+        public delAnimationChanged delAnimation = null;
         CheckBox cb = null;
         public CheckBox SetValue
         {
@@ -42,6 +44,15 @@ namespace Lab3_Ballz
 
                 //hide the dialog
                 Hide();
+            }
+        }
+
+        private void UI_AnimationSpeed_Tbr_ValueChanged(object sender, EventArgs e)
+        {
+            if(delAnimation != null)
+            {
+                //invoke the delegate as a method
+                delAnimation(UI_AnimationSpeed_Tbr.Value);
             }
         }
     }

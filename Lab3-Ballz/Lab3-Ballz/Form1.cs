@@ -19,7 +19,7 @@ namespace Lab3_Ballz
         //declare an object of the modal dialog
         ScoreModeLessDialog scoreModeLessDialog = new ScoreModeLessDialog();
         SelectDifficultyModalDialog dialog=null;
-        AnimationModeLessDialog animationModeLessDialog = null;
+        AnimationModeLessDialog animationModeLessDialog = new AnimationModeLessDialog();
         //ScoreModeLessDialog scoreModeLessDialog = null;
         Stopwatch stopwatch=null;   
         int row;
@@ -51,6 +51,12 @@ namespace Lab3_Ballz
                     timer1.Enabled = true;
 
                     UI_Play_Btn.Enabled = false; //disable play button
+
+                    //set the score to zero
+                    score = 0;
+                    sum = 0;
+                    numberOfBallsKilled = 0;
+                    scoreModeLessDialog.SetScore = score;
                    
                 }
                 else if(DialogResult==DialogResult.Cancel)
@@ -64,6 +70,12 @@ namespace Lab3_Ballz
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            //get the animation speed
+            if(animationModeLessDialog!=null)
+            {
+                //register  a method to the delegate
+                animationModeLessDialog.delAnimation = GetAnimationTime;
+            }
             Text = $"{c++}";
             //  dialog.drawer.MouseLeftClick += Canvas_MouseLeftClick;
             bool isValid = dialog.drawer.GetLastMouseLeftClick(out pos);
@@ -92,6 +104,10 @@ namespace Lab3_Ballz
                 timer1.Enabled = false; 
                 dialog.drawer.Clear();
                 dialog.drawer.AddText("Game Over !", 25.5f, Color.Red);
+
+                dialog = null;
+                //activate the play button
+                UI_Play_Btn.Enabled=true;  
             }
             else
             {
@@ -99,6 +115,11 @@ namespace Lab3_Ballz
             }
             
 
+        }
+
+        private void GetAnimationTime(int value)
+        {
+            timer1.Interval = value;
         }
 
         private int Pick()
@@ -241,9 +262,8 @@ namespace Lab3_Ballz
         private void UI_ShowAnimSpeed_Cbx_CheckedChanged(object sender, EventArgs e)
         {
 
-            if (animationModeLessDialog == null)
+            if (animationModeLessDialog != null)
             {
-                animationModeLessDialog = new AnimationModeLessDialog();
                 animationModeLessDialog.SetValue = (CheckBox)sender;
                 animationModeLessDialog.delClose = UncheckTheBox;
 

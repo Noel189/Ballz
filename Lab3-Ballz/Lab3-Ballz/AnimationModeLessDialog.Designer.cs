@@ -36,7 +36,7 @@
             // 
             // UI_AnimationSpeed_Tbr
             // 
-            this.UI_AnimationSpeed_Tbr.Location = new System.Drawing.Point(54, 80);
+            this.UI_AnimationSpeed_Tbr.Location = new System.Drawing.Point(59, 80);
             this.UI_AnimationSpeed_Tbr.Maximum = 200;
             this.UI_AnimationSpeed_Tbr.Minimum = 10;
             this.UI_AnimationSpeed_Tbr.Name = "UI_AnimationSpeed_Tbr";
@@ -44,6 +44,7 @@
             this.UI_AnimationSpeed_Tbr.TabIndex = 0;
             this.UI_AnimationSpeed_Tbr.TickFrequency = 10;
             this.UI_AnimationSpeed_Tbr.Value = 10;
+            this.UI_AnimationSpeed_Tbr.ValueChanged += new System.EventHandler(this.UI_AnimationSpeed_Tbr_ValueChanged);
             // 
             // label1
             // 
