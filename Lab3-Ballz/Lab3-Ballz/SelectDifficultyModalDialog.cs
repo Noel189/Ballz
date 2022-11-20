@@ -14,7 +14,11 @@ namespace Lab3_Ballz
 {
     public partial class SelectDifficultyModalDialog : Form
     {
-       public string gameDifficulty;
+        /*   TEST
+        public const int WIDTH = 200;
+        public const int HEIGHT = 100;
+        */
+        public string gameDifficulty;
       public  const int WIDTH=800;
        public const int HEIGHT=600;
       public  const int BALL_SIZE=50;
@@ -139,7 +143,7 @@ namespace Lab3_Ballz
             }
         }
 
-        private void Display(GameElements[,] games)
+        public void Display(GameElements[,] games)
         {
             drawer.Clear();
             for(int row=0; row<games.GetLength(0); row++)
@@ -152,20 +156,14 @@ namespace Lab3_Ballz
                     if (games[row,col].stateOfObject==StateOfObjects.Alive)
                     {
 
-                        if(yPosition >= HEIGHT)
-                        {
-                            yPosition = 0;
-                        }
 
-                             if((col*BALL_SIZE)<WIDTH && yPosition < HEIGHT)
-                        {
-                            drawer.AddEllipse(col * BALL_SIZE, yPosition, BALL_SIZE, BALL_SIZE, games[row, col].ballColor);
-                        }
+                            drawer.AddEllipse(col * BALL_SIZE, row*BALL_SIZE, BALL_SIZE, BALL_SIZE, games[row, col].ballColor);
+
                  
                     }
                   
          }
-                yPosition += BALL_SIZE;
+                
             }
            
         }

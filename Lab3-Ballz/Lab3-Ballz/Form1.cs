@@ -30,6 +30,7 @@ namespace Lab3_Ballz
         int score;
         Point pos;
         int c = 0;
+        int ballsAlive = 0;
         public Form1()
         {
             InitializeComponent();
@@ -71,7 +72,16 @@ namespace Lab3_Ballz
             if(isValid)
             {
                 score = Pick();
+                if(score>1)
+                {
+                    score = score * 50 + score;
+                }
+                else
+                {
+                    score=score * 50;
+                }
                 scoreModeLessDialog.SetScore = score;
+               
 
             }
     
@@ -82,29 +92,36 @@ namespace Lab3_Ballz
             {
                 timer1.Enabled = false; 
             }
-     
+            else
+            {
+                StepDown();
+            }
+            
+
         }
 
         private int Pick()
         {
-                int score = 0;
+                score = 0;
                 col = pos.X / SelectDifficultyModalDialog.BALL_SIZE;
                 row = pos.Y / SelectDifficultyModalDialog.BALL_SIZE;
-                if(dialog.gameElements[row, col].stateOfObject == SelectDifficultyModalDialog.StateOfObjects.Dead)
-                {
-
-                }
-                else
-                {
+            //    if(dialog.gameElements[row, col].stateOfObject == SelectDifficultyModalDialog.StateOfObjects.Dead)
+            //    {
+                
+            //}
+            //    else
+            //    {
                   score =  CheckBalls(row, col, dialog.gameElements[row, col].ballColor);
-                }
+               
+            //}
             
             return score;
         }
 
         private int CheckBalls(int row, int col, Color ballColor)
         {
-            if (row >  11 || col>15 || row <0 || col<0)
+            //if (row > 1 || col > 3 || row < 0 || col < 0) //test
+                if (row >  11 || col>15 || row <0 || col<0)
             { 
              return 0;
             }
@@ -121,34 +138,79 @@ namespace Lab3_Ballz
     
                 dialog.gameElements[row, col].stateOfObject = SelectDifficultyModalDialog.StateOfObjects.Dead;
                     numberOfBallsKilled = 1;
-                //make the recursive calls
-              CheckBalls(row + 1, col, ballColor);//down
-              CheckBalls(row - 1, col, ballColor);//up
-              CheckBalls(row, col + 1, ballColor);//right
-              CheckBalls(row, col - 1, ballColor);//left
-                                                 
-                sum += numberOfBallsKilled;
-
+               
+              
+            
             }
+            //make the recursive calls
+            CheckBalls(row + 1, col, ballColor);//down
+            CheckBalls(row - 1, col, ballColor);//up
+            CheckBalls(row, col + 1, ballColor);//right
+            CheckBalls(row, col - 1, ballColor);//left
+
+            sum += numberOfBallsKilled;
+
 
             return sum;
            
 
         }
 
-        private void Canvas_MouseLeftClick(Point pos, CDrawer dr)
+        private void StepDown()
         {
+            //iterate throught the 2D array from top to bottom
+            for(int row = 0; row < dialog.gameElements.GetLength(0); row++)
+            {
+                for(int col = 0; col < dialog.gameElements.GetLength(1); col++)
+                {
+                    //check if the element is dead
+                    if (dialog.gameElements[row,col].stateOfObject == SelectDifficultyModalDialog.StateOfObjects.Dead)
+                    {
+                       if(row>0)
+                        {
+                            //do
+                            //{
+                                if (dialog.gameElements[row-1, col].stateOfObject == SelectDifficultyModalDialog.StateOfObjects.Alive)
+                                {
 
+                                dialog.gameElements[row, col] = dialog.gameElements[row - 1, col];
+                                //dialog.gameElements[row, col] = new GameElements(dialog.gameElements[row - 1, col].ballColor, dialog.gameElements[row - 1, col].stateOfObject);
+                                // dialog.gameElements[row, col] = dialog.gameElements[row - 1, col];
+                                dialog.gameElements[row-1, col].stateOfObject = SelectDifficultyModalDialog.StateOfObjects.Dead;
+
+                                }
+                            //} while (dialog.gameElements[row, col].stateOfObject == SelectDifficultyModalDialog.StateOfObjects.Alive);
+                            //else
+                            //{
+                            //    dialog.gameElements[row, col].stateOfObject = SelectDifficultyModalDialog.StateOfObjects.Dead;
+                            //}
+                           
+                        }
+               
+                        
+                    }
+                }
+                dialog.Display(dialog.gameElements);
+            }
            
-            score = Pick();
-        
-           // MessageBox.Show(score.ToString());
         }
 
         private int BallsAlive()
         {
-          //  ******* // to be done *******
-            return count;
+            ballsAlive = 0;
+            //  ******* // to be done *******
+           for(int row=0;row< dialog.gameElements.GetLength(0);row++)
+            {
+                for(int col=0;col< dialog.gameElements.GetLength(1);col++)
+
+                {
+                    if(dialog.gameElements[row,col].stateOfObject == SelectDifficultyModalDialog.StateOfObjects.Alive)
+                    {
+                        ballsAlive++;
+                    }
+                }
+            }
+            return ballsAlive;
 
 
         }
